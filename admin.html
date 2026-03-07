@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FF Tournament Hub - Admin Panel</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="ff-admin-bg">
+  <header class="topbar ff-admin-topbar">
+    <h1>🛡️ FF Command Center</h1>
+    <nav>
+      <a href="index.html">User Panel</a>
+      <a href="admin.html" class="active">Admin Panel</a>
+    </nav>
+  </header>
+
+  <main class="container admin-container">
+    <section id="adminLogin" class="card ff-login-card">
+      <p class="ff-badge">FREE FIRE HOST CONTROL</p>
+      <h2>Admin Login</h2>
+      <form id="adminLoginForm" class="form-grid">
+        <label>
+          Username
+          <input type="text" id="adminUsername" required placeholder="Enter admin username" autocomplete="username" />
+        </label>
+        <label>
+          Password
+          <input type="password" id="adminPassword" required placeholder="Enter admin password" autocomplete="current-password" />
+        </label>
+        <button type="submit" class="ff-btn">Enter Control Room</button>
+      </form>
+      <p class="hint">Default: username <code>Pathak bhai</code> and password <code>pandit ji</code></p>
+    </section>
+
+    <section id="adminDashboard" class="hidden">
+      <div class="card welcome-row ff-headline-card">
+        <div>
+          <p class="ff-badge">LIVE HOSTING</p>
+          <h2>Admin Dashboard</h2>
+        </div>
+        <button id="adminLogoutBtn" class="danger">Logout</button>
+      </div>
+
+      <section class="card ff-card-glow">
+        <h3>Global Payment QR (same for all tournaments)</h3>
+        <form id="settingsForm" class="form-grid">
+          <label>
+            QR Image URL
+            <input id="qrUrl" placeholder="https://.../qr.png" required />
+          </label>
+          <button type="submit" class="ff-btn">Save Global QR</button>
+        </form>
+      </section>
+
+      <section class="card ff-card-glow">
+        <h3>Create Tournament</h3>
+        <form id="tournamentForm" class="form-grid admin-form-grid">
+          <label>Title <input id="title" required placeholder="Friday Night Clash" /></label>
+          <label>Date <input id="date" type="date" required /></label>
+          <label>Entry Fee ₹ <input id="fee" type="number" min="0" required /></label>
+          <label>Prize Pool ₹ <input id="prizePool" type="number" min="0" required /></label>
+          <label>Slots <input id="slots" type="number" min="1" required /></label>
+          <label>Mode <input id="mode" required placeholder="Squad / Duo / Solo" /></label>
+          <label>Map <input id="map" required placeholder="Bermuda" /></label>
+          <button type="submit" class="ff-btn">Add Tournament</button>
+        </form>
+      </section>
+
+      <section class="card ff-card-glow">
+        <h3>🔥 Tournament List</h3>
+        <div id="adminTournamentList"></div>
+      </section>
+
+      <section class="card ff-card-glow">
+        <h3>👤 Users</h3>
+        <div id="userList"></div>
+      </section>
+
+      <section class="card ff-card-glow">
+        <h3>💳 Payment Requests</h3>
+        <div id="paymentList"></div>
+      </section>
+    </section>
+  </main>
+
+  <script src="admin.js"></script>
+</body>
+</html>
