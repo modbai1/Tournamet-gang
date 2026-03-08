@@ -1,0 +1,98 @@
+ (cd "$(git rev-parse --show-toplevel)" && git apply --3way <<'EOF' 
+diff --git a/index.html b/index.html
+new file mode 100644
+index 0000000000000000000000000000000000000000..b14972755e1453bfe0854cf4980adc0b50321588
+--- /dev/null
++++ b/index.html
+@@ -0,0 +1,88 @@
++<!doctype html>
++<html lang="en">
++<head>
++  <meta charset="UTF-8" />
++  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
++  <title>FF Tournament Hub - User Panel</title>
++  <link rel="stylesheet" href="styles.css" />
++</head>
++<body class="ff-user-bg">
++  <header class="topbar ff-user-topbar">
++    <h1>🎮 FF Battle Lobby</h1>
++    <nav>
++      <a href="index.html" class="active">User Panel</a>
++      <a href="admin.html">Admin Panel</a>
++    </nav>
++  </header>
++
++  <main class="container">
++    <section id="loginSection" class="card ff-user-card ff-user-hero">
++      <p class="ff-badge ff-blue">SURVIVOR CHECK-IN</p>
++      <h2>User Login</h2>
++      <p class="hint">Instagram ID and Telegram ID are optional. Provide at least one contact field so admin can reach you.</p>
++      <form id="loginForm" class="form-grid">
++        <label>
++          Player Name
++          <input type="text" id="playerName" required placeholder="Your in-game name" />
++        </label>
++        <label>
++          Instagram ID (optional)
++          <input type="text" id="instagramId" placeholder="@your_instagram" />
++        </label>
++        <label>
++          Telegram ID (optional)
++          <input type="text" id="telegramId" placeholder="@your_telegram" />
++        </label>
++        <button type="submit" class="ff-btn-blue">Enter Arena</button>
++      </form>
++    </section>
++
++    <section id="dashboardSection" class="hidden">
++      <div class="card welcome-row ff-user-card ff-user-hero">
++        <div>
++          <p class="ff-badge ff-blue">READY TO DROP</p>
++          <h2 id="welcomeMsg">Welcome</h2>
++          <p class="hint">Pick a tournament, check prize pool and profit stats, then enroll with UTR.</p>
++        </div>
++        <button id="logoutBtn" class="danger">Logout</button>
++      </div>
++
++      <section class="card ff-user-card">
++        <h3>⚡ Available Tournaments</h3>
++        <div id="tournamentList" class="grid"></div>
++      </section>
++
++      <section class="card ff-user-card">
++        <h3>📌 My Enrollments</h3>
++        <div id="myEnrollments"></div>
++      </section>
++
++      <section class="card ff-user-card">
++        <h3>📞 Contact</h3>
++        <p>Need help? Reach admin on Telegram: <strong>@ff_tourney_admin</strong></p>
++        <p>Email: <strong>support@ffhub.local</strong></p>
++      </section>
++    </section>
++  </main>
++
++  <dialog id="enrollDialog">
++    <form method="dialog" id="enrollForm" class="dialog-content">
++      <h3>Enroll in Tournament</h3>
++      <p id="selectedTournament"></p>
++      <div class="qr-box">
++        <img id="qrImage" alt="Payment QR" />
++      </div>
++      <label>
++        UTR Number
++        <input id="utrInput" required placeholder="Enter UTR after payment" />
++      </label>
++      <menu>
++        <button value="cancel" type="button" id="cancelEnroll">Cancel</button>
++        <button type="submit" class="ff-btn-blue">Submit Enrollment</button>
++      </menu>
++    </form>
++  </dialog>
++
++  <script src="app.js"></script>
++</body>
++</html>
+ 
+EOF
+)
